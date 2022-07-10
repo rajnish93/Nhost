@@ -3,12 +3,15 @@ version: '3.7'
 services:
   postgres:    
     image: "nhost/postgres:12-v0.0.6"    
+    ports:
+      - 5432:5432
     restart: always    
     volumes:      
       - "./data/db_data:/var/lib/postgresql/data"    
     environment:      
-      POSTGRES_PASSWORD: postgres      
-      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: postgres 
+      POSTGRES_DB: postgres 
   graphql-engine:
     image: hasura/graphql-engine:v2.8.1
     ports:
